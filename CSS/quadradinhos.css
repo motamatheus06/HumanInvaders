@@ -1,0 +1,13 @@
+.quadradinhos {
+    width: 31px;
+    height: 31px;
+
+    border: solid white 1px;
+    margin: none;
+    display: inline-block;
+}
+
+.quadradinhos:hover {
+    transform: scale(1.09);
+    background-color: rgb(0, 255, 221);
+}
