@@ -1,4 +1,4 @@
-const bolas = [];
+let bolas = [];
 const tabuleiro = [];
 
 for (let y=0; y<51; y++) {
@@ -14,24 +14,33 @@ for (let y=0; y<51; y++) {
   }
   
   function squareClick(ev) {
-    console.log(this.x, this.y);
-    const bola = document.createElement("b");
-    this.appendChild(bola);
-    bola.innerText = "👽";
-    bola.x = this.x;
-    bola.y = this.y;
-    bolas.push(bola);
+    console.log("você clicou em",this.x, this.y);
   }
 }
 
 function tic() {
   bolas.forEach(bola => {
     bola.x += 1;
-    if (bola.x > 50) bola.x = 50;
+    if (bola.x > 50) return bola.morre();
     tabuleiro[bola.y][bola.x].appendChild(bola);
-    console.log(bola.y, bola.x);
   })
 }
 
+function randomSpawn() {
+  const rand = Math.floor(Math.random()* 51);
+  const bola = document.createElement("b");
+  bola.y = rand;
+  bola.x = 0;
+  tabuleiro[bola.y][bola.x].appendChild(bola);
+  bola.innerText = "👽";
+  bola.morre = () => {
+    bolas = bolas.filter(b => b != bola);
+    bola.remove();
+  }
+  bolas.push(bola);
+}
+
+setInterval(randomSpawn, 2000);
+console.log(randomSpawn());
 setInterval(tic,100);
 

@@ -1,0 +1,15 @@
+.botao {
+    position: absolute;
+    display: inline-flex;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    padding-left: 9px;
+    background:yellow;
+    top: 50px;
+    left: 30px;
+}
+
+.botao:hover {
+    transform: scale(1.1);
+}
