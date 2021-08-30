@@ -1,15 +1,18 @@
-.botao {
-    position: absolute;
-    display: inline-flex;
+#botao1, #botao2, #botao3, #botao4 {
+    position: relative;
+    display: block;
     align-items: center;
     width: 40px;
     height: 40px;
+    padding-top: 7px;
     padding-left: 9px;
+    margin-bottom: 5px;
+    top: 10px;
+    left: 10px;
     background:yellow;
-    top: 50px;
-    left: 30px;
+    cursor: pointer;
 }
 
-.botao:hover {
+#botao1:hover, #botao2:hover, #botao3:hover, #botao4:hover {
     transform: scale(1.1);
 }

@@ -15,6 +15,12 @@ for (let y=0; y<51; y++) {
   
   function squareClick(ev) {
     console.log("você clicou em",this.x, this.y);
+    let obstaculo = document.createElement("c");
+    this.appendChild(obstaculo);
+    obstaculo = botao.innerText;
+    obstaculo.x = this.x;
+    obstaculo.y = this.y;
+    bolas.push(obstaculo);
   }
 }
 
@@ -39,6 +45,16 @@ function randomSpawn() {
   }
   bolas.push(bola);
 }
+
+function buttomClick(ev){
+  let botao = document.getElementsByTagName("a");
+  console.log(botao);
+}
+
+botao1.onclick = buttomClick;
+botao2.onclick = buttomClick;
+botao3.onclick = buttomClick;
+botao4.onclick = buttomClick;
 
 setInterval(randomSpawn, 2000);
 console.log(randomSpawn());
