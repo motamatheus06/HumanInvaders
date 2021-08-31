@@ -1,5 +1,6 @@
 let bolas = [];
 const tabuleiro = [];
+//const botoes = ["🕳️","🔥","⛰️","💣"];
 
 for (let y=0; y<51; y++) {
   tabuleiro[y] = [];
@@ -17,10 +18,10 @@ for (let y=0; y<51; y++) {
     console.log("você clicou em",this.x, this.y);
     let obstaculo = document.createElement("c");
     this.appendChild(obstaculo);
-    obstaculo = botao.innerText;
+    obstaculo.innerText = buttonClick();
     obstaculo.x = this.x;
     obstaculo.y = this.y;
-    bolas.push(obstaculo);
+    tabuleiro.push(obstaculo);
   }
 }
 
@@ -46,15 +47,17 @@ function randomSpawn() {
   bolas.push(bola);
 }
 
-function buttomClick(ev){
-  let botao = document.getElementsByTagName("a");
+function buttonClick(ev){
+  let botao = this.innerText;
   console.log(botao);
+  botao1.onclick = buttonClick;
+  botao2.onclick = buttonClick;
+  botao3.onclick = buttonClick;
+  botao4.onclick = buttonClick;
+  return botao;
 }
 
-botao1.onclick = buttomClick;
-botao2.onclick = buttomClick;
-botao3.onclick = buttomClick;
-botao4.onclick = buttomClick;
+buttonClick();
 
 setInterval(randomSpawn, 2000);
 console.log(randomSpawn());
