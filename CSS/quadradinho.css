@@ -3,6 +3,7 @@
     height: 20px;
     background: #089;
     display: inline-block;
+    position: relative;
 }
 
 .quadradinho:nth-child(odd) {
@@ -14,14 +15,24 @@
     background-color: rgb(0, 255, 221);
 }
 
-b, c {
-    position: relative;
-    display: block;
-    width: 20px;
-    height: 20px;
-    top: 0px;
-    left: 0px;
-    background: red;
-    border-radius: 50%;
+b, o, c {
+    position: absolute;
+    display: flex;
+    width: 30px;
+    height: 30px;
+    bottom: 2px;
+    left: -12px;
     transform:  rotate(-45deg) scale(1, 1.333);
+    font-size: 25px;
+    justify-content: center;
+    align-items: flex-end;
+    pointer-events: none;
+}
+
+c {
+    font-size: 15px;
+}
+
+c.big {
+    font-size: 25px;
 }

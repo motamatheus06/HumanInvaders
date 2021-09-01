@@ -1,4 +1,4 @@
-#botao1, #botao2, #botao3, #botao4 {
+#botao1, #botao2, #botao3, #botao4, #botao5 {
     position: relative;
     display: block;
     align-items: center;
@@ -13,6 +13,6 @@
     cursor: pointer;
 }
 
-#botao1:hover, #botao2:hover, #botao3:hover, #botao4:hover {
+#botao1:hover, #botao2:hover, #botao3:hover, #botao4:hover, #botao5:hover {
     transform: scale(1.1);
 }

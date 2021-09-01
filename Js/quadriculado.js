@@ -1,6 +1,9 @@
 let bolas = [];
 const tabuleiro = [];
-//const botoes = ["🕳️","🔥","⛰️","💣"];
+let ferramentaAtual;
+
+//🌲🌳🌴
+
 
 for (let y=0; y<51; y++) {
   tabuleiro[y] = [];
@@ -13,16 +16,46 @@ for (let y=0; y<51; y++) {
     square.onclick = squareClick;
     tabuleiro[y][x] = square;
   }
-  
-  function squareClick(ev) {
-    console.log("você clicou em",this.x, this.y);
-    let obstaculo = document.createElement("c");
-    this.appendChild(obstaculo);
-    obstaculo.innerText = buttonClick();
-    obstaculo.x = this.x;
-    obstaculo.y = this.y;
-    tabuleiro.push(obstaculo);
+}
+
+function addEmoji(x,y,tag,emoji) {
+  let elemento = document.createElement(tag);
+  tabuleiro[y][x].appendChild(elemento);
+  elemento.x = x;
+  elemento.y = y;
+  elemento.innerText = emoji;
+  return elemento;
+}
+
+const construcoes = ["🏡","🏘️","🏢","🏦"];
+
+for (let y=45; y<51; y++){
+  for (let x=45; x<51; x++){
+    let construcao = construcoes[Math.floor(Math.random()*construcoes.length)];
+    if (x != 50 || y != 50) addEmoji(x,y,"c",construcao);
   }
+}
+
+const natureza = ["⛰️","🌲","🌳","🌴"];
+
+for (let y=0; y<51; y++){
+  for (let x=0; x<51; x++){
+    let coisa = natureza[Math.floor(Math.random()*natureza.length)];
+    if (x > 20 && x < 26 && y >= 0 && y < 30) addEmoji(x,y,"o",coisa);
+    if (x > 30 && x < 36 && y > 20 && y < 51) addEmoji(x,y,"o",coisa);
+  }
+}
+
+
+addEmoji(50,50,"c","🏰").className = "big";
+
+function squareClick(ev) {
+  console.log("você clicou em",this.x, this.y);
+  if (this.firstChild){
+    return alert("this square already have an element");
+  }
+  let obstaculo = addEmoji(this.x,this.y,"o",ferramentaAtual);
+  tabuleiro.push(obstaculo);
 }
 
 function tic() {
@@ -35,11 +68,7 @@ function tic() {
 
 function randomSpawn() {
   const rand = Math.floor(Math.random()* 51);
-  const bola = document.createElement("b");
-  bola.y = rand;
-  bola.x = 0;
-  tabuleiro[bola.y][bola.x].appendChild(bola);
-  bola.innerText = "👽";
+  const bola = addEmoji(0,rand,"b","👽");
   bola.morre = () => {
     bolas = bolas.filter(b => b != bola);
     bola.remove();
@@ -48,16 +77,15 @@ function randomSpawn() {
 }
 
 function buttonClick(ev){
-  let botao = this.innerText;
-  console.log(botao);
-  botao1.onclick = buttonClick;
-  botao2.onclick = buttonClick;
-  botao3.onclick = buttonClick;
-  botao4.onclick = buttonClick;
-  return botao;
+  ferramentaAtual = this.innerText;
+  console.log(ferramentaAtual);
 }
 
-buttonClick();
+botao1.onclick = buttonClick;
+botao2.onclick = buttonClick;
+botao3.onclick = buttonClick;
+botao4.onclick = buttonClick;
+botao5.onclick = buttonClick;
 
 setInterval(randomSpawn, 2000);
 console.log(randomSpawn());
