@@ -2,9 +2,6 @@ let bolas = [];
 const tabuleiro = [];
 let ferramentaAtual;
 
-//🌲🌳🌴
-
-
 for (let y=0; y<51; y++) {
   tabuleiro[y] = [];
   for (let x=0; x<51; x++) {
@@ -90,4 +87,3 @@ botao5.onclick = buttonClick;
 setInterval(randomSpawn, 2000);
 console.log(randomSpawn());
 setInterval(tic,100);
-
